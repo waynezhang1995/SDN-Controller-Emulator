@@ -1,10 +1,3 @@
-'''
-Yuwei Zhang
-V00805647
-
-Assignment 2 Part 3
-'''
-
 #!/usr/bin/python
 
 from mininet.net import Mininet
@@ -32,10 +25,10 @@ def myNetwork():
 
     info( '*** Add switches\n')
     s5 = net.addSwitch('s5', cls=OVSKernelSwitch)
+    s3 = net.addSwitch('s3', cls=OVSKernelSwitch)
     s4 = net.addSwitch('s4', cls=OVSKernelSwitch)
     s7 = net.addSwitch('s7', cls=OVSKernelSwitch)
     s1 = net.addSwitch('s1', cls=OVSKernelSwitch)
-    s3 = net.addSwitch('s3', cls=OVSKernelSwitch)
     s2 = net.addSwitch('s2', cls=OVSKernelSwitch)
     s6 = net.addSwitch('s6', cls=OVSKernelSwitch)
 
@@ -67,8 +60,7 @@ def myNetwork():
     net.addLink(s4, s5)
     net.addLink(s5, s6)
     net.addLink(s6, s7)
-    net.addLink(s5, s1)
-    net.addLink(s1, s6)
+    net.addLink(s2, s3)
 
     info( '*** Starting network\n')
     net.build()
@@ -78,10 +70,10 @@ def myNetwork():
 
     info( '*** Starting switches\n')
     net.get('s5').start([c0])
+    net.get('s3').start([c0])
     net.get('s4').start([c0])
     net.get('s7').start([c0])
     net.get('s1').start([c0])
-    net.get('s3').start([c0])
     net.get('s2').start([c0])
     net.get('s6').start([c0])
 
